@@ -14,7 +14,8 @@ discord_client = commands.Bot(command_prefix='MCstat ')
 
 @discord_client.command()
 async def num_online(ctx, channel: discord.VoiceChannel, mc_ip, mc_port, message):
-    print("hi")
+    if not ctx.message.author.guild_permissions.administrator:
+        await ctx.send('need to be admin for that')
     servers.append({
         'channel': channel,
         'ip': mc_ip,
