@@ -1,10 +1,20 @@
+from os import getenv
+import os
 import discord
 from discord.ext import commands
 from mcipc.query import Client
 import asyncio
 
-with open('token.txt') as file:
-    TOKEN = file.readline()
+TOKEN = getenv('TOKEN')
+
+if TOKEN is None:
+    try:
+        with open('token.txt') as file:
+            TOKEN = file.readline()
+    except:
+        print("Can't find discord token. You need to ether set it as an env variable or put it in a file called token.txt")
+        exit()
+
 
 # TODO: save and read this for a file
 servers = []
@@ -36,6 +46,7 @@ async def update_stats():
             except:
                 pass
         await asyncio.sleep(5)
+
 
 discord_client.loop.create_task(update_stats())
 discord_client.run(TOKEN)
