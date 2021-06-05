@@ -25,3 +25,5 @@ jobs:
           tags: |
             docker.pkg.github.com/${{ github.repository }}/mcstat:${{ github.sha }}
             docker.pkg.github.com/${{ github.repository }}/mcstat:${{ github.ref }}
+          secrets: |
+            "discord_token=${{ secrets.discord_TOKEN }}"
