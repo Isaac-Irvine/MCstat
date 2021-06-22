@@ -10,6 +10,6 @@ RUN pip3 install -r requirements.txt
 
 COPY main.py main.py
 
-CMD ["echo", "$TOKEN"]
+RUN mkdir data
 
 CMD ["python3", "main.py"]
